@@ -1,0 +1,29 @@
+{
+  "name": "simplified-blog-backend",
+  "version": "1.0.0",
+  "description": "Simplified Blog Backend",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "blog",
+    "backend"
+  ],
+  "author": "Sabin Poudel",
+  "license": "ISC",
+  "devDependencies": {
+    "@firebase/auth-types": "^0.13.0",
+    "nodemon": "^3.1.9"
+  },
+  "dependencies": {
+    "@firebase/app": "^0.11.3",
+    "@firebase/auth": "^1.9.1",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "firebase": "^11.5.0",
+    "firebase-admin": "^13.2.0",
+    "firebase-auth": "^0.1.2"
+  }
+}
