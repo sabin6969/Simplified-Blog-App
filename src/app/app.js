@@ -2,12 +2,14 @@ import express from "express";
 import userRoute from "../routes/user.route.js";
 import AppStatusCode from "../constants/app.statuscode.js";
 import ApiResponse from "../utils/api.response.js";
+import cookieParser from "cookie-parser";
 
 const expressApp = express();
 
 
 // app level middleware
 expressApp.use(express.json({ limit: "16kb" }))
+expressApp.use(cookieParser());
 
 // mapping the routes to expressApp
 expressApp.use("/api/user", userRoute);

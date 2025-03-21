@@ -6,6 +6,8 @@ class AppStatusCode {
     static #unauthorized = 401;
     static #notFound = 404;
     static #forbidden = 403;
+    static #tooManyRequest = 429;
+    static #conflict = 409;
 
     /// to be used when the server sucessfully serve's the client request (as expected!)
     static get sucessCode() {
@@ -31,6 +33,15 @@ class AppStatusCode {
     static get forbiddenCode() {
         return this.#forbidden;
     }
+
+    static get tooManyRequestCode() {
+        return this.#tooManyRequest;
+    }
+
+    static get conflictCode() {
+        return this.#conflict;
+    }
+
     // TODO: add more statusCodes if required
 }
 

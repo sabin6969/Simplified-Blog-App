@@ -1,3 +1,4 @@
+import AppStatusCode from "../constants/app.statuscode.js";
 import ErrorResponse from "./error.response.js";
 
 /**
@@ -14,26 +15,29 @@ const asyncHandler = (callBackFunction) => async (req, res, next) => {
             switch (error.code) {
                 case 'auth/invalid-credential':
                 case 'auth/user-not-found':
-                    statusCode = 404;
+                    statusCode = AppStatusCode.notFoundStatusCode;
                     message = "User not found or invalid credentials";
                     break;
                 case 'auth/wrong-password':
-                    statusCode = 401;
+                    statusCode = AppStatusCode.unauthorizedCode;
                     message = "Incorrect password";
                     break;
                 case 'auth/invalid-email':
-                    statusCode = 400;
+                    statusCode = AppStatusCode.badRequestCode;
                     message = "Invalid email format";
                     break;
                 case 'auth/too-many-requests':
-                    statusCode = 429;
+                    statusCode = AppStatusCode.tooManyRequestCode;
                     message = "Too many login attempts. Please try again later";
                     break;
+                case 'auth/email-already-in-use':
+                    statusCode = AppStatusCode.conflictCode;
+                    message = "Email is already in use";
                 default:
                     break;
             }
         }
-        res.status(statusCode).json(new ErrorResponse(statusCode, message));
+        res.status(statusCode).json(new ErrorResponse(statusCode, message, null));
     }
 }
 
