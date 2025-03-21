@@ -33,6 +33,9 @@ const asyncHandler = (callBackFunction) => async (req, res, next) => {
                 case 'auth/email-already-in-use':
                     statusCode = AppStatusCode.conflictCode;
                     message = "Email is already in use";
+                case 'auth/id-token-expired':
+                    statusCode = AppStatusCode.unauthorizedCode;
+                    message = "Token has expired,Login again to continue";
                 default:
                     break;
             }
