@@ -1,22 +1,14 @@
 import dotenv from "dotenv";
-import express from "express";
-import userRouter from "./routes/user.route.js";
+import expressApp from "./app/app.js";
+import connectDb from "./db/index.js";
+
 
 // configuring the environment variable
-dotenv.config({ path: "../.env" })
+dotenv.config({ path: ".env" })
 
 
-const myExpressApp = express();
-
-
-// app level middlewares
-myExpressApp.use(express.json({ limit: "16kb" })) // to parse the incomming json data
-
-
-myExpressApp.use("/api/user", userRouter);
-
-
-
-myExpressApp.listen(process.env.port || 5000, () => {
-    console.log(`Server is up and running at ${process.env.port || 5000}`);
-})
+connectDb().then((value) => {
+    expressApp.listen(process.env.port || 5000, () => {
+        console.log(`Server is up and running at Port number ${process.env.port || 5000}`);
+    });
+}).catch(console.error);

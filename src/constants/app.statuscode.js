@@ -31,7 +31,7 @@ class AppStatusCode {
     static get forbiddenCode() {
         return this.#forbidden;
     }
-
+    // TODO: add more statusCodes if required
 }
 
 export default AppStatusCode;

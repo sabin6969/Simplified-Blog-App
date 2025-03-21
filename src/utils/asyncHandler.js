@@ -3,7 +3,6 @@ import ErrorResponse from "./error.response.js";
 /**
  * 
  * @param {function} callBackFunction 
- * @returns 
  */
 const asyncHandler = (callBackFunction) => async (req, res, next) => {
     try {
