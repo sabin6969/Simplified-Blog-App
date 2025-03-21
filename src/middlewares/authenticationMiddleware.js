@@ -4,7 +4,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import ErrorResponse from "../utils/error.response.js";
 import admin from "../db/firebase.admin.js";
 
-const authMiddleware = asyncHandler(async (req, res, next) => {
+const authenticationMiddleware = asyncHandler(async (req, res, next) => {
     const token = req.cookies[AppConstants.tokenKey];
     if (!token) {
         throw new ErrorResponse(AppStatusCode.unauthorizedCode, "Unauthorized request", undefined);
@@ -16,4 +16,4 @@ const authMiddleware = asyncHandler(async (req, res, next) => {
     }
 });
 
-export default authMiddleware;
+export default authenticationMiddleware;

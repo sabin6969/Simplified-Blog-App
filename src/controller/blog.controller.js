@@ -13,7 +13,7 @@ const createBlogPost = asyncHandler(async (req, res) => {
         throw new ErrorResponse(AppStatusCode.badRequestCode, "Blog title and content both are required");
     }
     else {
-        // .user property is injected inside request object inside the middleware
+        // .user property is injected inside the request object during the execution of middleware
         const user = req.user;
         const blog = await Blog.create({
             title,
@@ -77,9 +77,23 @@ const blogPostById = asyncHandler(async (req, res, next) => {
     }
 })
 
+const deleteBlogById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const blog = await Blog.findByIdAndDelete(id);
+    res
+        .status(AppStatusCode.sucessCode)
+        .json(
+            new ApiResponse(
+                AppStatusCode.sucessCode,
+                `Sucessfully delete blog with id "${id}"`,
+                null,
+            )
+        );
+})
 
 export {
     createBlogPost,
     allPosts,
     blogPostById,
+    deleteBlogById,
 }
