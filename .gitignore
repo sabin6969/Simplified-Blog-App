@@ -134,3 +134,4 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+src/simplified-blog-app-firebase-adminsdk-fbsvc-0577a28f1f.json
