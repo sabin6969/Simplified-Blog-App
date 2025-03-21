@@ -91,9 +91,36 @@ const deleteBlogById = asyncHandler(async (req, res, next) => {
         );
 })
 
+const updateBlogById = asyncHandler(async (req, res, next) => {
+    const { id } = req.params;
+    const { title, content } = req.body;
+    if ([title, content].every((e) => typeof e === "undefined" || e?.trim() === "")) {
+        throw new ErrorResponse(
+            AppStatusCode.badRequestCode,
+            `Both title and content cannot be empty`
+        );
+    }
+    else {
+        const updatedBlog = await Blog.findByIdAndUpdate(id, {
+            title,
+            content,
+        }, { new: true });
+        res
+            .status(AppStatusCode.sucessCode)
+            .json(
+                new ApiResponse(
+                    AppStatusCode.sucessCode,
+                    `Sucessfully updated blog with id "${id}"`,
+                    updatedBlog,
+                )
+            )
+    }
+})
+
 export {
     createBlogPost,
     allPosts,
     blogPostById,
     deleteBlogById,
+    updateBlogById,
 }

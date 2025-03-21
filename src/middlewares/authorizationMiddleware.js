@@ -28,7 +28,7 @@ const authorizationMiddleware = asyncHandler(async (req, res, next) => {
                 if (blog.author !== req.user.uid) {
                     throw new ErrorResponse(
                         AppStatusCode.forbiddenCode,
-                        `Couldnot delete a blog with id "${id}", forbidden request!`
+                        `Forbidden request!. Couldnot perform ${req.method} method on ${req.path} in a blog with id "${id}"`
                     )
                 }
                 next();
