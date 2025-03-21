@@ -1,6 +1,7 @@
 import dotenv from "dotenv";
 import expressApp from "./app/app.js";
 import connectDb from "./db/index.js";
+import { firebaseApp } from "./db/firebase.js";
 
 
 // configuring the environment variable
