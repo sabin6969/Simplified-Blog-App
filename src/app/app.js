@@ -5,7 +5,6 @@ import AppStatusCode from "../constants/app.statuscode.js";
 import ApiResponse from "../utils/api.response.js";
 import cookieParser from "cookie-parser";
 
-
 const expressApp = express();
 
 
@@ -14,7 +13,7 @@ expressApp.use(express.json({ limit: "16kb" }))
 expressApp.use(cookieParser());
 
 // mapping the routes to expressApp
-expressApp.use("/api/user", userRoute);
+expressApp.use("/api/auth", userRoute);
 expressApp.use("/api/blog", blogRoute);
 
 
@@ -28,6 +27,5 @@ expressApp.use((req, res) => {
         )
     );
 });
-
 
 export default expressApp;

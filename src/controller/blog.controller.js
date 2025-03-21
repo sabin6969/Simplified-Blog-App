@@ -4,8 +4,7 @@ import Blog from "../models/blog.model.js";
 import ApiResponse from "../utils/api.response.js";
 import asyncHandler from "../utils/asyncHandler.js";
 import ErrorResponse from "../utils/error.response.js";
-import { Auth } from "firebase-admin/auth";
-
+import webSocketManager from "../utils/websocket.js";
 
 const createBlogPost = asyncHandler(async (req, res) => {
     const { title, content } = req.body;
@@ -20,6 +19,12 @@ const createBlogPost = asyncHandler(async (req, res) => {
             content,
             author: user.uid,
         });
+
+        webSocketManager.broadcast({
+            event: "newBlogPost",
+            data: blog,
+        });
+
         res
             .status(AppStatusCode.sucessCode)
             .json(new ApiResponse(
