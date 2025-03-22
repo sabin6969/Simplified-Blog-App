@@ -10,9 +10,16 @@ const authenticationMiddleware = asyncHandler(async (req, res, next) => {
         throw new ErrorResponse(AppStatusCode.unauthorizedCode, "Unauthorized request", undefined);
     }
     else {
-        const decodedToken = await admin.auth().verifyIdToken(token);
-        req.user = decodedToken;
-        next();
+        try {
+            const decodedToken = await admin.auth().verifyIdToken(token);
+            req.user = decodedToken;
+            next();
+        } catch (error) {
+            throw new ErrorResponse(
+                AppStatusCode.unauthorizedCode,
+                `${error.message}`,
+            )
+        }
     }
 });
 

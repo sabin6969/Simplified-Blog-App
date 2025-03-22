@@ -1,6 +1,7 @@
 class AppStatusCode {
 
     static #sucess = 200;
+    static #created = 201;
     static #badRequest = 400;
     static #internalServerError = 500;
     static #unauthorized = 401;
@@ -12,6 +13,10 @@ class AppStatusCode {
     /// to be used when the server sucessfully serve's the client request (as expected!)
     static get sucessCode() {
         return this.#sucess;
+    }
+
+    static get createdCode() {
+        return this.#created;
     }
 
     static get badRequestCode() {

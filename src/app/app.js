@@ -14,7 +14,7 @@ expressApp.use(cookieParser());
 
 // mapping the routes to expressApp
 expressApp.use("/api/auth", userRoute);
-expressApp.use("/api/blog", blogRoute);
+expressApp.use("/api", blogRoute);
 
 
 // catch all route 

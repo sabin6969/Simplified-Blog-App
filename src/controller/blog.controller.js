@@ -26,9 +26,9 @@ const createBlogPost = asyncHandler(async (req, res) => {
         });
 
         res
-            .status(AppStatusCode.sucessCode)
+            .status(AppStatusCode.createdCode)
             .json(new ApiResponse(
-                AppStatusCode.sucessCode,
+                AppStatusCode.createdCode,
                 "Blog post created sucessful",
                 blog
             )
