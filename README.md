@@ -1,6 +1,26 @@
 
-## API Routes
+# Blog API
 
+This is a Node.js Express API for a blog application with user authentication and blog post management.
+
+## Environment Variables
+
+Create a `.env` file in the root directory with the following variables:
+- `PORT = PORT_NUMBER`
+- `MONGODB_CONNECTION_STRING = MONGODB_CONNECTION_STRING`
+- `FIREBASE_API = FIREBASE_API`
+- `FIREBASE_PROJECT_ID = FIREBASE_PROJECT_ID`
+
+
+## Firebase Setup
+
+1. Download your Firebase service account JSON file from the Firebase Console
+2. Place the file inside the `src` folder
+3. Update the path in `firebase.admin.js` at line 7:
+```javascript
+credential: cert(Path.join("src/simplified-blog-app-firebase-adminsdk-fbsvc-0577a28f1f.json"))
+```
+## API Routes
 ### User Routes (`user.router.js`)
 - `POST api/auth/login` - User login endpoint
 - `POST api/auth/register` - User registration endpoint
