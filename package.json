@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon ./src/index.js",
-    "start":"node ./src/index.js"
+    "start": "node ./src/index.js"
   },
   "keywords": [
     "blog",
@@ -25,9 +25,7 @@
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
-    "firebase": "^11.5.0",
     "firebase-admin": "^13.2.0",
-    "firebase-auth": "^0.1.2",
     "mongoose": "^8.12.1",
     "ws": "^8.18.1"
   }
